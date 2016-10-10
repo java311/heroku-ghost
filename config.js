@@ -11,18 +11,18 @@ config = {
     // When running Ghost in the wild, use the production environment.
     // Configure your URL and mail settings here
     production: {
-        url: 'https://ghost-worldr.rhcloud.com',
+        url: process.env.MY_URL,
         mail: {},
         fileStorage: false,
     	storage: false,
     	database: {
     		client: 'postgres',
-      		connection: env.OPENSHIFT_POSTGRESQL_DB_URL,
+      		connection: process.env.DATABASE_URL,
       		debug: false
     	},
     	server: {
       		host: '0.0.0.0',
-      		port: NODE_PORT || 3000
+      		port: process.env.PORT
     	},
     	paths: {
       		contentPath: path.join(__dirname, '/content/')
